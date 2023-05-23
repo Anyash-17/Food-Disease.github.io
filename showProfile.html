@@ -1,0 +1,43 @@
+<?php
+
+session_start();
+
+$conn = mysql_connect("127.0.0.1", "root", "");
+mysql_select_db("farmecy", $conn);
+
+$x1 = $_SESSION["uID"];
+$res = mysql_query("select * from farm where uID = '$x1'");
+if (($rows = mysql_fetch_array($res))) {
+?>
+    <div class="img-profile text-center">
+        <img src="server_uploads/images/<?php echo $rows[4] ?>" alt="image is loading" class="img-fluid rounded-3" width="80%" heigth="80%">
+    </div>
+    <hr>
+    <div class="row justify-content-evenly">
+        <div class="col-md-10">
+            <table class="table text-dark table-borderless">
+                <div class="bg-primary text-dark my-1 px-1 rounded-3">
+                    <tr>
+                        <td>First Name</td>
+                        <td><?php echo $rows[0]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Middle Name</td>
+                        <td><?php echo $rows[1]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td><?php echo $rows[2]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><?php echo $rows[3]; ?></td>
+                    </tr>
+                </div>
+            </table>
+        </div>
+    </div>
+
+<?php
+}
+?>

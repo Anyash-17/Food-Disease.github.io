@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- font family -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <!-- css  -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      /* toast start */
+      #none {
+        position: absolute;
+        right: 10px;
+        top: 100px;
+        width: 400px;
+        display: none;
+        z-index: 1;
+      }
+
+      @media screen and (max-width: 500px) {
+        #none {
+          width: 380px;
+        }
+      }
+
+      /* toast end */
+    </style>
+
+    <title>Farmecy</title>
+  </head>
+
+  <body>
+    <!-- nav start -->
+    <nav class="navbar navbar-expand-lg navbar-light rounded-3" id="nav-color">
+      <div class="container text-uppercase">
+        <a class="navbar-brand" href="#" id="main-font">Farmecy</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav m-auto mb-2 mb-lg-0" id="nav-font">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#scrollToAbout">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#scrollToHappyClients"
+                >Feedback</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#scrollToContact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#scrollToFaqs">Faq's</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <button
+              type="button"
+              class="btn button me-2"
+              id="nav-font"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#login"
+              aria-controls="login"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn button me-2"
+              id="nav-font"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#signup"
+              aria-controls="signup"
+            >
+              Signup
+            </button>
+            <button
+              class="btn button rounded-circle"
+              id="nav-font"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#search"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- search modal start -->
+    <div
+      class="modal fade bg-success"
+      id="search"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="searchLabel">Search Here</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-success">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- search modal end -->
+
+    <!-- Signup offcanvas start -->
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="signup"
+      aria-labelledby="signupLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="signupLabel">Signup</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <form method="POST" id="signupForm" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="fname" class="form-label">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="First name"
+              name="fname"
+              aria-label="First name"
+              onchange="fnameval()"
+            />
+            <font color="red" id="fn"></font>
+          </div>
+          <div class="mb-3">
+            <label for="mname" class="form-label">Middle Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Middle name"
+              name="mname"
+              aria-label="First name"
+              onchange="mnameval()"
+            />
+            <font color="red" id="mn"></font>
+          </div>
+          <div class="mb-3">
+            <label for="lname" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Last name"
+              name="lname"
+              aria-label="First name"
+              onchange="lnameval()"
+            />
+            <font color="red" id="ln"></font>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              name="signupEmail"
+              id="signupEmail"
+              aria-describedby="emailHelp"
+              onchange="sEmailval()"
+            />
+            <font color="red" id="e"></font>
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Profile Pic</label>
+            <input
+              class="form-control"
+              type="file"
+              placeholder="Picture"
+              name="file"
+              id="formFile"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              name="password"
+              id="password"
+              onchange="passval()"
+            />
+            <font color="red" id="ps"></font>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Confirm Password</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Confirm Password"
+              name="repassword"
+              id="repassword"
+              onchange="passvali()"
+            />
+            <font color="red" id="ps2"></font>
+          </div>
+          <button
+            type="submit"
+            class="btn button"
+            name="signupbtn"
+            id="signupbtn"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Signup offcanvas end -->
+
+    <!-- login offcanvas start -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="login"
+      aria-labelledby="loginLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="loginLabel">Login</h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <form method="GET" id="loginForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="email"
+              aria-describedby="emailHelp"
+              onchange="emailval()"
+            />
+            <font color="red" id="em"></font>
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              name="pass"
+              id="password1"
+              onchange="passVal()"
+            />
+            <font color="red" id="ps1"></font>
+          </div>
+          <button type="submit" class="btn button" name="loginBtn">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- login offcanvas end -->
+
+    <!-- nav end  -->
+
+    <!-- Carousel start -->
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active carousel-size">
+          <img src="img/farm.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item carousel-size">
+          <img src="img/farm2.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item carousel-size">
+          <img src="img/farm3.jpg" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block text-dark">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- Carousel end -->
+
+    <!-- container start -->
+
+    <div class="container-fluid background">
+      <!-- about us start -->
+      <div
+        class="row justify-content-center about-img"
+        id="scrollToAbout"
+        data-aos="fade-up"
+      >
+        <div class="col-md-6 text-center">
+          <!-- <img src="img/about-us-head.png" alt="image is loading" class="image-fluid " style="width:70%;"> -->
+          <h1 class="my-5 fw-bolder">ABOUT US</h1>
+        </div>
+      </div>
+
+      <div class="row justify-content-evenly py-4" id="about-background">
+        <div class="col-lg-3 pt-2 text-center" data-aos="fade-up">
+          <div
+            class="card custom-border border zoom rounded-3 border-top-0 border-5 border-success mx-auto mb-2"
+            style="width: 18rem"
+          >
+            <img
+              src="img/about-us2.jpg"
+              class="card-img-top"
+              alt="image is loading"
+              height="200px"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-uppercase fs-2 fw-bolder">Founder</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 pt-2 text-center">
+          <div
+            class="card custom-border border zoom rounded-3 border-top-0 border-5 border-success mx-auto mb-2"
+            style="width: 18rem"
+          >
+            <img
+              src="img/about-us.png"
+              class="card-img-top"
+              alt="image is loading"
+              height="200px"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-uppercase fs-3 fw-bolder">
+                Web-Developer
+              </h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 pt-2 text-center">
+          <div
+            class="card custom-border border zoom rounded-3 border-top-0 border-5 border-success mx-auto mb-2"
+            style="width: 18rem"
+          >
+            <img
+              src="img/about-us1.jpeg"
+              class="card-img-top"
+              alt="image is loading"
+              height="200px"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-uppercase fs-2 fw-bolder">
+                Seo Expert
+              </h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- about us end -->
+
+      <!-- feedback start -->
+      <section id="scrollToHappyClients">
+        <div class="contanier happyclients text-center">
+          <h1 class="text-center fw-bolder">OUR HAPPY CLIENTS</h1>
+          <p class="text-uppercase pt-1">Our satisfied Customer says</p>
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div class="carousel-inner container">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 mb-2 mb-md-0">
+                    <div class="box">
+                      <a href="#"
+                        ><img
+                          src="img/profile.jpg"
+                          class="image-thumbnail img-fluid"
+                      /></a>
+                      <p class="m-4">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Odio sed quos veritatis? Animi culpa dolores
+                        distinctio blanditiis nostrum officia provident? Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit.
+                        Molestiae voluptas necessitatibus ut quibusdam, deleniti
+                        dignissimos corporis exercitationem corrupti
+                        reprehenderit reiciendis.
+                      </p>
+                      <h2>Developer</h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon slide-button"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon slide-button"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- feedback end -->
+
+      <!-- contact us start -->
+
+      <div
+        class="row py-3 py-md-5 text-dark justify-content-evenly contact-us"
+        id="scrollToContact"
+      >
+        <div class="col-md-5">
+          <h1 class="pb-3 text-decoration-underline fs-1 fw-bolder">
+            Contact Form
+          </h1>
+          <form action="">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="First Name"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Email address</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="exampleFormControlInput2"
+                placeholder="name@example.com"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"
+                >Your Query</label
+              >
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn text-dark button">
+              <i class="bi bi-arrow-right-circle-fill"></i
+              >&nbsp;&nbsp;&nbsp;Send
+            </button>
+          </form>
+        </div>
+        <div class="col-md-5">
+          <h1
+            class="pb-3 pt-3 pt-md-0 text-decoration-underline fs-1 fw-bolder"
+          >
+            Address
+          </h1>
+          <p class="fs-5">Lalpur<br />Ranchi, Jharkhand<br />+91</p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1884.8916551586626!2d85.33827622172042!3d23.371392399507176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1721c194ced%3A0xf02707411486a195!2sBIT%20Extension%20Lalpur!5e0!3m2!1shi!2sin!4v1630135658348!5m2!1shi!2sin"
+            width="500px"
+            height="256px"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+      <!-- contact us end -->
+
+      <!-- FAQs start -->
+      <div class="row justify-content-evenly py-4 faq" id="scrollToFaqs">
+        <div class="col-md-10">
+          <h1 class="fw-bolder text-center fs-1 pb-3 text-dark">FAQ's</h1>
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Accordion Item #1
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <strong>This is the first item's accordion body.</strong> It
+                  is shown by default, until the collapse plugin adds the
+                  appropriate classes that we use to style each element. These
+                  classes control the overall appearance, as well as the showing
+                  and hiding via CSS transitions. You can modify any of this
+                  with custom CSS or overriding our default variables. It's also
+                  worth noting that just about any HTML can go within the
+                  <code>.accordion-body</code>, though the transition does limit
+                  overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  Accordion Item #2
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <strong>This is the second item's accordion body.</strong> It
+                  is hidden by default, until the collapse plugin adds the
+                  appropriate classes that we use to style each element. These
+                  classes control the overall appearance, as well as the showing
+                  and hiding via CSS transitions. You can modify any of this
+                  with custom CSS or overriding our default variables. It's also
+                  worth noting that just about any HTML can go within the
+                  <code>.accordion-body</code>, though the transition does limit
+                  overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  Accordion Item #3
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It
+                  is hidden by default, until the collapse plugin adds the
+                  appropriate classes that we use to style each element. These
+                  classes control the overall appearance, as well as the showing
+                  and hiding via CSS transitions. You can modify any of this
+                  with custom CSS or overriding our default variables. It's also
+                  worth noting that just about any HTML can go within the
+                  <code>.accordion-body</code>, though the transition does limit
+                  overflow.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- FAQs end -->
+
+      <!-- footer start -->
+      <hr class="my-0" />
+
+      <div class="row justify-content-evenly py-3 text-dark" id="footer">
+        <div class="col-md-3 text-center">
+          <h1 class="fs-3 fw-bolder pb-2">Farmecy</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi,
+            enim et modi accusamus repellat deserunt ullam consectetur dolores
+            voluptates delectus quisquam ab, possimus eum quo.
+          </p>
+        </div>
+        <div class="col-md-3 text-center">
+          <h1 class="fs-3 fw-bolder pb-2">Important Links</h1>
+          <p class="mb-1 pointer scrollTop">Home</p>
+          <p class="mb-1 pointer"><a href="#scrollToAbout">About us</a></p>
+          <p class="mb-1 pointer"><a href="#scrollToFeedback">Feedback</a></p>
+          <p class="mb-1 pointer"><a href="#scrollToContact">Contact</a></p>
+          <p class="mb-1 pointer"><a href="#scrollToFaqs">FAQ's</a></p>
+          <p
+            class="mb-1 pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#tandc"
+          >
+            Terms & Condition
+          </p>
+          <p
+            class="mb-1 pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#privacy-policy-drop"
+          >
+            Privacy Policy
+          </p>
+        </div>
+        <div class="col-md-3 text-center">
+          <h1 class="fs-3 fw-bolder pb-2">Company Imformation</h1>
+          <p class="fs-5">Lalpur<br />Ranchi, Jharkhand<br />+91 0000000000</p>
+          <p class="fs-3 pointer">
+            <i class="bi bi-facebook">&nbsp;&nbsp;&nbsp;</i
+            ><i class="bi bi-instagram"></i>&nbsp;&nbsp;&nbsp;<i
+              class="bi bi-telegram"
+            ></i
+            >&nbsp;&nbsp;&nbsp;<i class="bi bi-whatsapp"></i>
+          </p>
+        </div>
+      </div>
+      <hr class="my-0" />
+      <div class="row justify-content-evenly">
+        <div class="col-md-8 text-center">
+          <p>&copy; Copyright 2019-2022 By Farmecy. All Rights Reserved.</p>
+        </div>
+      </div>
+      <!-- footer end -->
+
+      <!-- privacy policy start -->
+
+      <div
+        class="modal fade"
+        id="privacy-policy-drop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="privacy-policy-dropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="privacy-policy-dropLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
+                repudiandae amet assumenda eum ad maxime voluptates velit
+                nesciunt eveniet odio soluta ab dolore repellendus vitae.
+                Tempore atque beatae optio commodi natus eaque totam ab magni,
+                earum quam. Excepturi quibusdam qui vitae repellat temporibus
+                consectetur, aliquid ducimus ad fuga voluptatum accusantium amet
+                maiores corrupti, quam, sint neque molestias magni? Laboriosam
+                dolorem, est, quidem vero unde possimus magni impedit odit earum
+                iure tenetur aperiam eius beatae placeat quas fugiat doloremque
+                natus! Similique debitis reiciendis alias accusamus aliquam?
+                Dolorem, minima assumenda aspernatur, autem optio odio porro
+                praesentium quo nostrum recusandae consequuntur temporibus
+                suscipit! Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Soluta sequi impedit magni optio, dolor veritatis amet
+                dignissimos velit cum in numquam ab iste error nihil nostrum
+                molestias vel maiores, quae qui tempore. Dolore eum dolores
+                perferendis suscipit laborum eos voluptas aperiam ipsa itaque
+                officiis sunt numquam consequatur doloribus quas delectus vel
+                soluta sapiente officia facere hic unde, fuga tempora
+                exercitationem! Tenetur quae magni eum obcaecati, possimus ex
+                mollitia quibusdam facilis culpa esse quo ab quos fugiat error
+                iusto suscipit rem iste! Ipsum impedit commodi laborum tempora
+                pariatur sunt, odit aliquid adipisci provident inventore. Quo
+                necessitatibus, iure aut libero rem laboriosam? Voluptatum enim
+                dolorem minus architecto, veniam consequuntur, velit nemo dolor
+                natus totam iure sit eius praesentium ullam odio cum. Mollitia
+                sequi atque fugit cumque et laudantium placeat. Esse asperiores
+                sint, quisquam sed mollitia pariatur quod officiis reprehenderit
+                adipisci ipsum soluta ex maiores totam? Porro adipisci illum,
+                sit vero dolore iure quasi eum fuga, amet praesentium aut modi
+                repellendus voluptatum, beatae eos mollitia doloremque non
+                voluptate temporibus. Dolores molestias distinctio tenetur?
+                Temporibus modi iusto aspernatur libero aliquam commodi omnis
+                facere praesentium tempore sint asperiores excepturi ex
+                architecto est, officia fuga, in nemo quisquam autem
+                consequuntur atque alias. Voluptates corporis repudiandae
+                itaque?
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- privacy policy end -->
+
+      <!-- terms & Condition start -->
+
+      <div
+        class="modal fade"
+        id="tandc"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="tandcLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tandcLabel">Modal title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                autem rem esse id, sit aliquam quod totam. Libero nemo ea
+                dolorum vel aliquid, ab doloremque optio tempore? Esse autem
+                tempora ut deleniti ullam debitis suscipit mollitia
+                exercitationem quia eligendi vel beatae harum veritatis
+                doloremque quidem aliquam iure accusantium, praesentium
+                explicabo distinctio, in dolores illo non. Reiciendis distinctio
+                quam itaque, dolor molestias nisi nulla facilis modi
+                exercitationem illo culpa velit deleniti et at ratione
+                asperiores ex. Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Iste quos autem deserunt rerum possimus sunt
+                doloribus nemo accusamus hic! Consequuntur tempore ipsa fugiat
+                enim ipsam, itaque minus atque obcaecati quasi. Sapiente
+                repellendus tempore explicabo velit reprehenderit magnam
+                excepturi officiis numquam, temporibus accusamus. Nemo explicabo
+                suscipit alias consectetur distinctio corrupti facilis amet
+                tempora porro sapiente architecto voluptatibus illo voluptates,
+                quo ut mollitia modi, a eius iure incidunt! Nesciunt perferendis
+                doloribus eaque dignissimos vel? Nam rerum reprehenderit at
+                cupiditate, dolores debitis ipsa aperiam, sequi saepe
+                necessitatibus alias modi vel voluptates accusamus cumque enim
+                voluptas repudiandae perspiciatis architecto blanditiis,
+                expedita quis? Reiciendis, eius?
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- terms & Condition end -->
+    </div>
+
+    <!-- container end -->
+
+    <!-- scrol top start -->
+    <div class="scrollTop pointer">
+      <i class="bi bi-arrow-up-short float-right fs-1" id="myBtn"></i>
+    </div>
+    <!-- scrol top end -->
+
+    <!-- toast successfull popup start -->
+    <div class="row" id="none">
+      <div class="col-md-12">
+        <div class="text-white bg-success border-0">
+          <div class="d-flex">
+            <div class="toast-body">
+              You have successfully registered &nbsp; &nbsp;<i
+                class="bi bi-emoji-smile-fill"
+              ></i>
+            </div>
+            <button
+              type="button"
+              class="btn-close btn-close-white me-2 m-auto"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+              id="toastCross"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- toast successfull popup end -->
+
+    <!-- jQuery link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- index.js  -->
+    <script src="js/index.js"></script>
+
+    <script>
+      $("#toastCross").on("click", function () {
+        $("#none").fadeOut();
+      });
+
+      function emailval() {
+        let text = document.getElementById("email").value;
+
+        let regx = /^([a-z A-Z 0-9\.-]+)@([a-z]{2,7}).([a-z]{2,6})$/;
+
+        if (regx.test(text)) {
+          document.getElementById("em").innerHTML = " ";
+        } else {
+          document.getElementById("em").innerHTML = "Invalid Email ID";
+          return false;
+        }
+      }
+
+      function passval() {
+        let text = document.getElementById("password").value;
+
+        let regx = /^(?!.* )(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/;
+
+        if (regx.test(text)) {
+          document.getElementById("ps").innerHTML = " ";
+        } else {
+          document.getElementById("ps").innerHTML =
+            "Password Must Contain of 8 letters and must have one small alphabet, one large alphabet, one digit and one symbol.";
+          return false;
+        }
+      }
+
+      // password matching
+
+      function passvali() {
+        firstPass = document.getElementById("password").value;
+        secondPass = document.getElementById("repassword").value;
+        if (firstPass !== secondPass) {
+          document.getElementById("ps2").innerHTML = "Password is not matching";
+          return false;
+        }
+      }
+
+      function fnameval() {
+        let str = document.getElementById("fname").value;
+
+        for (i = 0; i < str.length; i++) {
+          ch = str.charAt(i);
+          if (!(ch >= "a" && ch <= "z") && !(ch >= "A" && ch <= "Z")) {
+            document.getElementById("fn").innerHTML = "Invalid First Name";
+            return false;
+          } else {
+            document.getElementById("fn").innerHTML = "";
+          }
+        }
+      }
+      function mnameval() {
+        let str = document.getElementById("mname").value;
+
+        for (i = 0; i < str.length; i++) {
+          ch = str.charAt(i);
+          if (!(ch >= "a" && ch <= "z") && !(ch >= "A" && ch <= "Z")) {
+            document.getElementById("mn").innerHTML = "Invalid Middle Name";
+            return false;
+          } else {
+            document.getElementById("mn").innerHTML = "";
+          }
+        }
+      }
+
+      function lnameval() {
+        let str = document.getElementById("lname").value;
+
+        for (i = 0; i < str.length; i++) {
+          ch = str.charAt(i);
+          if (!(ch >= "a" && ch <= "z") && !(ch >= "A" && ch <= "Z")) {
+            document.getElementById("ln").innerHTML = "Invalid Last Name";
+            return false;
+          } else {
+            document.getElementById("ln").innerHTML = "";
+          }
+        }
+      }
+
+      function sEmailval() {
+        let text = document.getElementById("signupEmail").value;
+
+        let regx = /^([a-z A-Z 0-9\.-]+)@([a-z]{2,7}).([a-z]{2,6})$/;
+
+        if (regx.test(text)) {
+          document.getElementById("e").innerHTML = " ";
+        } else {
+          document.getElementById("e").innerHTML = "Invalid Email ID";
+          return false;
+        }
+      }
+
+      function passVal() {
+        let text = document.getElementById("password1").value;
+
+        let regx = /^(?!.* )(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/;
+
+        if (regx.test(text)) {
+          document.getElementById("ps1").innerHTML = " ";
+        } else {
+          document.getElementById("ps1").innerHTML =
+            "Password Must Contain of 8 letters and must have one small alphabet, one large alphabet, one digit and one symbol.";
+          return false;
+        }
+      }
+    </script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      //   alert("Email or Password is Incorrect!!");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+html{scroll-behavior: smooth;}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* nav start  */
+
+#nav-color{
+    background-image: linear-gradient(160deg,rgba(167, 240, 23, 0.514) 0%, rgba(30, 240, 23, 0.514) 77%),url(../img/leaf2.jpg);
+    background-size: cover;
+}
+
+#main-font{
+    font-weight: 700;
+}
+
+#nav-font{
+    font-weight: 500;
+}
+
+.button{
+    background-image: linear-gradient(150deg,rgba(167, 240, 23, 0.514) 0%, rgba(30, 240, 23, 0.514) 77%);
+    border: 2px solid greenyellow;
+}
+.button:hover{
+    background-color: greenyellow;
+    border: 2px solid black ;
+
+}
+ /* nav end  */
+
+ /* carousel start  */
+.carousel-size{
+    height: 650px;
+}
+
+@media screen and (max-width: 1024px){
+    .carousel-size{
+        height: 550px;
+    }
+}
+@media screen and (max-width: 800px){
+    .carousel-size{
+        height: 450px;
+    }
+}
+@media screen and (max-width: 500px){
+    .carousel-size{
+        height: 200px;
+    }
+}
+ /* carousel end  */
+
+.background{
+    background-image: linear-gradient(150deg,rgba(167, 240, 23, 0.514) 0%, rgba(30, 240, 23, 0.514) 77%),url(../img/leaf.png);
+    background-size: cover;
+}
+
+/* about us start */
+.zoom:hover{
+    box-shadow: 10px 10px 10px;
+}
+
+/* about us end  */
+
+/* feedback start  */
+.happyclients{
+    width: 100%;
+    padding: 80px 0;
+}
+
+.box{
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+.box:hover{
+    background: rgb(100, 184, 66);
+}
+
+.box:hover p{
+    color: white;
+}
+
+.carousel-indicators{
+    position: absolute;
+    right: 0;
+    bottom: -60px !important;
+}
+
+.carousel-indicators li{
+    color: #378527 !important;
+}
+
+.box a{
+    position: relative;
+}
+
+.box a img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.box a:after{
+    content: "\f10d";
+    font-family: FontAwesome;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(to right, #04ff11 0%, #b5ff54 0%, #11b411 100%);
+    color: white;
+    position: absolute;
+    top: 120%;
+    left: 70%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box h1{
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(104, 255, 44);
+    margin-bottom: 10px;
+}
+
+.box h2{
+    font-size: 13px;
+    font-weight: 400;
+    color: rgb(211, 205, 205);
+    margin-bottom: 10px;
+}
+
+.slide-button{
+    border-radius: 50%;
+    padding: 60px;
+    box-shadow: 10px 10px 10px 0 rgba(0,0,0,0.3);
+}
+
+@media screen and (max-width: 800px){
+    .slide-button{
+        border-radius: 0%;
+        padding: 0px;
+        box-shadow: none;
+    }
+}
+/* feedback end  */
+
+/* footer start  */
+.pointer{
+    cursor: pointer;
+}
+
+#footer a{
+    text-decoration: none;
+    color: black;
+}
+/* footer end  */
+
+/* btn start  */
+#myBtn{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    z-index: 99;
+    border: none;
+    color: #fff;
+    background: rgb(38, 255, 9);
+    border-radius: 10%;
+    padding: 5px;
+}
+
+#myBtn:hover{
+    background-color: rgb(245, 149, 40);
+}
+/* btn end  */
+

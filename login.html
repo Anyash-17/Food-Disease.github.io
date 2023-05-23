@@ -1,0 +1,461 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- font family -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Login Panel</title>
+</head>
+
+<body>
+    <!-- nav start -->
+    <nav class="navbar navbar-expand-lg navbar-light rounded-3" id="nav-color">
+        <div class="container text-uppercase">
+            <a class="navbar-brand" href="#" id="main-font">Farmecy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-md-3" id="nav-font">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" id="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" id="diseases">Diseases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" data-bs-toggle="modal" data-bs-target="#profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" data-bs-toggle="modal" data-bs-target="#editProfile">Edit profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" data-bs-toggle="modal" data-bs-target="#changePassword">Change Password</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="index.php">Logout</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn button rounded-circle" id="nav-font" type="button" data-bs-toggle="modal" data-bs-target="#search"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- search modal start -->
+    <div class="modal fade bg-success" id="search" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchLabel">Search Here</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- search modal end -->
+
+    <!-- profile start -->
+    <div class="modal fade" id="profile" tabindex="-1" aria-labelledby="profileLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileLabel">Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="showprofile">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- profile end -->
+
+    <!-- edit profile start -->
+    <div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" id="editProfile" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <?php $x1 = $_SESSION["email"];
+                        $res = mysql_query("select * from farm where emailid='$x1'");
+                        if (($rows = mysql_fetch_array($res))) {
+                        ?>
+                            <div class=" mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="fname" name="check" value="<?php echo $rows[0]; ?>" aria-describedby="textHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="middleName" class="form-label">Middle Name</label>
+                                <input type="text" class="form-control" id="middleName" name="mname" value="<?php echo $rows["1"]; ?>" aria-describedby="textHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lname" value="<?php echo $rows["2"]; ?>" aria-describedby="textHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="<?php echo $rows["3"]; ?>" aria-describedby="emailHelp" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pic" class="form-label">Profile Picture</label>
+                                <input type="file" class="form-control" id="profile" name="file" aria-describedby="emailHelp">
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" name="saveEdit">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- edit profile end -->
+
+    <!-- change password start -->
+    <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" id="cPassword">
+                    <div class="modal-body">
+                        <label for="inputPassword5" class="form-label">Password</label>
+                        <input type="password" id="inputPassword5" name="changePassword" class="form-control" aria-describedby="passwordHelpBlock">
+                        <font color="red" id="np"></font>
+
+                        <label for="inputPassword6" class="form-label">Confirm Password</label>
+                        <input type="text" id="inputPassword6" name="changePassword1" class="form-control" aria-describedby="passwordHelpBlock">
+                        <font color="red" id="rnp"></font>
+                        <div id="passwordHelpBlock" class="form-text">
+                            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" id="savePassword">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- change password start -->
+
+    <!-- nav end -->
+
+    <!-- home section start -->
+    <div class="container-fluid bgcolor" id="showHome">
+        <div class="row justify-content-evenly">
+            <div class="col-md-6">
+                <h1>Crop diseases</h1>
+                <p>Plant diseases are a significant yield and quality constraint for growers of broadacre crops in
+                    Western Australia.
+                </p>
+
+                <p>Plant pathogens can be fungal, bacterial, viral or nematodes and can damage plant parts above or
+                    below the ground.
+                    Identifying symptoms and knowing when and how to effectively control diseases is an ongoing
+                    challenge for WA growers
+                    of
+                    cereals (wheat, barley, oats and triticale), pulses (field pea, chickpea, faba bean), canola and
+                    lupin crops.</p>
+
+                <p>The Department of Primary Industries and Regional Development has a strong research, development and
+                    extension focus
+                    to
+                    assist industry to reduce the impact of crop diseases on all broadacre crops.</p>
+
+                <p>Results of extensive field/lab/glass house research and surveys across the WA grainbelt every year
+                    contribute to
+                    disease
+                    management packages and forecasting tools, and identify new incursions of crop pathogens or strains
+                    into WA.</p>
+
+                <p>The department also gathers and extends industry disease reports (PestFax), provides a disease
+                    diagnosis service and
+                    a
+                    broad range of management information for specific foliar and root diseases and viruses.</p>
+            </div>
+        </div>
+
+    </div>
+    <!-- home section end -->
+
+    <!-- diseases section start -->
+    <div class="container-fluid bgcolor" id="showDiseases" style="display: none;">
+        <div class="container diseases">
+            <div class="row justify-content-evenly" id="selectDiseases">
+                <div class="col-md-5">
+                    <h3 class="text-center">Select Your Problems</h3>
+                    <form method="POST" id="checkboxDetail">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check1" value="Powdery Mildew" id="flexCheckDefault1">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Powdery Mildew
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check2" value="Downy Mildew" id="flexCheckDefault2">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Downy Mildew
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check3" value="Black Spot" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Black Spot
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check4" value="Mosaic Virus" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Mosaic Virus
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check5" value="Damping-Off Disease" id="flexCheckDefault5">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Damping-Off Disease
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check6" value="Fusarium Wilt" id="flexCheckDefault6">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Fusarium Wilt
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check7" value="Verticillium Wilt" id="flexCheckDefault7">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Verticillium Wilt
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check8" value="Sooty Mold" id="flexCheckDefault8">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Sooty Mold
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check9" value="Snow Mold" id="flexCheckDefault9">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Snow Mold
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="check10" value="Rust" id="flexCheckDefault10">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Rust
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-success" name="getDetails" id="getDetails">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row justify-content-evenly" id="showSolutions">
+                
+            </div>
+        </div>
+    </div>
+    <!-- diseases section end -->
+
+    <!-- footer start -->
+    <div class="container-fluid background">
+        <hr class="my-0">
+
+        <div class="row justify-content-evenly py-3 text-dark" id="footer">
+            <div class="col-md-3 text-center">
+                <h1 class="fs-3 fw-bolder pb-2">Farmecy</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, enim et modi accusamus repellat
+                    deserunt ullam consectetur dolores voluptates delectus quisquam ab, possimus eum quo.</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <h1 class="fs-3 fw-bolder pb-2">Important Links</h1>
+                <p class="mb-1 pointer">Profile</p>
+                <p class="mb-1 pointer">Edit Profile</p>
+                <p class="mb-1 pointer" data-bs-toggle="modal" data-bs-target="#tandc">Terms & Condition</p>
+                <p class="mb-1 pointer" data-bs-toggle="modal" data-bs-target="#privacy-policy-drop">Privacy Policy</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <h1 class="fs-3 fw-bolder pb-2">Company Imformation</h1>
+                <p class="fs-5">Lalpur<br>Ranchi, Jharkhand<br>+91 0000000000</p>
+                <p class="fs-3 pointer"><i class="bi bi-facebook">&nbsp;&nbsp;&nbsp;</i><i class="bi bi-instagram"></i>&nbsp;&nbsp;&nbsp;<i class="bi bi-telegram"></i>&nbsp;&nbsp;&nbsp;<i class="bi bi-whatsapp"></i></p>
+            </div>
+        </div>
+        <hr class="my-0">
+        <div class="row justify-content-evenly">
+            <div class="col-md-8 text-center">
+                <p>&copy; Copyright 2019-2022 By Farmecy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+    <!-- footer end -->
+
+    <!-- privacy policy start -->
+
+    <div class="modal fade" id="privacy-policy-drop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="privacy-policy-dropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacy-policy-dropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, repudiandae amet assumenda
+                        eum ad maxime voluptates velit nesciunt eveniet odio soluta ab dolore repellendus vitae.
+                        Tempore atque beatae optio commodi natus eaque totam ab magni, earum quam. Excepturi
+                        quibusdam qui vitae repellat temporibus consectetur, aliquid ducimus ad fuga voluptatum
+                        accusantium amet maiores corrupti, quam, sint neque molestias magni? Laboriosam dolorem,
+                        est, quidem vero unde possimus magni impedit odit earum iure tenetur aperiam eius beatae
+                        placeat quas fugiat doloremque natus! Similique debitis reiciendis alias accusamus aliquam?
+                        Dolorem, minima assumenda aspernatur, autem optio odio porro praesentium quo nostrum
+                        recusandae consequuntur temporibus suscipit! Lorem ipsum dolor, sit amet consectetur
+                        adipisicing elit. Soluta sequi impedit magni optio, dolor veritatis amet dignissimos velit
+                        cum in numquam ab iste error nihil nostrum molestias vel maiores, quae qui tempore. Dolore
+                        eum dolores perferendis suscipit laborum eos voluptas aperiam ipsa itaque officiis sunt
+                        numquam consequatur doloribus quas delectus vel soluta sapiente officia facere hic unde,
+                        fuga tempora exercitationem! Tenetur quae magni eum obcaecati, possimus ex mollitia
+                        quibusdam facilis culpa esse quo ab quos fugiat error iusto suscipit rem iste! Ipsum impedit
+                        commodi laborum tempora pariatur sunt, odit aliquid adipisci provident inventore. Quo
+                        necessitatibus, iure aut libero rem laboriosam? Voluptatum enim dolorem minus architecto,
+                        veniam consequuntur, velit nemo dolor natus totam iure sit eius praesentium ullam odio cum.
+                        Mollitia sequi atque fugit cumque et laudantium placeat. Esse asperiores sint, quisquam sed
+                        mollitia pariatur quod officiis reprehenderit adipisci ipsum soluta ex maiores totam? Porro
+                        adipisci illum, sit vero dolore iure quasi eum fuga, amet praesentium aut modi repellendus
+                        voluptatum, beatae eos mollitia doloremque non voluptate temporibus. Dolores molestias
+                        distinctio tenetur? Temporibus modi iusto aspernatur libero aliquam commodi omnis facere
+                        praesentium tempore sint asperiores excepturi ex architecto est, officia fuga, in nemo
+                        quisquam autem consequuntur atque alias. Voluptates corporis repudiandae itaque?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- privacy policy end -->
+
+    <!-- terms & Condition start -->
+
+    <div class="modal fade" id="tandc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tandcLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tandcLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas autem rem esse id, sit aliquam
+                        quod totam. Libero nemo ea dolorum vel aliquid, ab doloremque optio tempore? Esse autem
+                        tempora ut deleniti ullam debitis suscipit mollitia exercitationem quia eligendi vel beatae
+                        harum veritatis doloremque quidem aliquam iure accusantium, praesentium explicabo
+                        distinctio, in dolores illo non. Reiciendis distinctio quam itaque, dolor molestias nisi
+                        nulla facilis modi exercitationem illo culpa velit deleniti et at ratione asperiores ex.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quos autem deserunt rerum
+                        possimus sunt doloribus nemo accusamus hic! Consequuntur tempore ipsa fugiat enim ipsam,
+                        itaque minus atque obcaecati quasi. Sapiente repellendus tempore explicabo velit
+                        reprehenderit magnam excepturi officiis numquam, temporibus accusamus. Nemo explicabo
+                        suscipit alias consectetur distinctio corrupti facilis amet tempora porro sapiente
+                        architecto voluptatibus illo voluptates, quo ut mollitia modi, a eius iure incidunt!
+                        Nesciunt perferendis doloribus eaque dignissimos vel? Nam rerum reprehenderit at cupiditate,
+                        dolores debitis ipsa aperiam, sequi saepe necessitatibus alias modi vel voluptates accusamus
+                        cumque enim voluptas repudiandae perspiciatis architecto blanditiis, expedita quis?
+                        Reiciendis, eius?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- terms & Condition end -->
+
+    <!-- jQuery link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="js/profile.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <?php
+
+    if (isset($_POST["saveEdit"])) {
+        $first_name = $_POST["fname"];
+        $middle_name = $_POST["mname"];
+        $last_name = $_POST["lname"];
+        $email = $_POST["email"];
+        $uID = $_SESSION["uID"];
+
+
+        if ($filename = $_FILES['file']['name'] != "") {
+            $filename = $_FILES['file']['name'];
+            $extension = pathinfo($filename, PATHINFO_EXTENSION);
+            $valid_extensions = array("jpg", "jpeg", "png");
+
+            if (in_array($extension, $valid_extensions)) {
+                $new_name = rand(100000, 9999999) . "." . $extension;
+                $path = "server_uploads/images/" . $new_name;
+
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $path)) {
+                    echo 1;
+                } else {
+                    echo 0;
+                }
+            } else {
+                echo 0;
+            }
+        } else {
+            $new_name = $_SESSION["picture"];
+        }
+
+
+        $sql = "update farm set fname='$first_name',mname='$middle_name',lname='$last_name',pic='$new_name' where emailid='$email'";
+
+        mysql_query($sql) or die("SQL Query Failed");
+    }
+
+    ?>
+</body>
+
+</html>
